@@ -5,20 +5,33 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Tech Stack
+	Ruby version 3.0.0
+	Rails Version 7
+	Database :- Postgres
 
-* System dependencies
 
-* Configuration
+* system dependancies
+	* rvm
+	* postgres
+	* elasticsearch
+		- installation of elasticsearch
+			
+			curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+	
+			echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+	
+			sudo apt update
+	
+			sudo apt install elasticsearch
+
 
 * Database creation
+	
+		rails db:create
+		rails db:migrate
 
 * Database initialization
+		
+		rails db:seed
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
