@@ -1,0 +1,35 @@
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+
+
+
+<div style="overflow-x: auto;">
+  <table>
+
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Publisher</th>
+      <th>Genre</th>
+    </tr>
+    <% @books.each do|book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.author %></td>
+        <td><%= book.publisher %></td>
+        <td><%= book.genre %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
