@@ -10,13 +10,66 @@ th, td {
 }
 
 tr:nth-child(even) {background-color: #f2f2f2;}
+
+.search-with-elastic-section{
+  width: 45%;
+  display: inline-block;
+  padding: 2%;
+}
+.search-without-elastic-section{
+  width: 45%;
+  display: inline-block;
+  float: right;
+  padding: 2%;
+}
+.search-section{
+  padding-bottom: 17px;
+}
+.timing-section{
+  padding: 2%;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 22px;
+}
 </style>
 
 
 
 <div style="overflow-x: auto;">
-  <table>
 
+  <% if @time_took.present? %>
+    <fieldset class='timing-section'>
+      <legend>Time Took to get result</legend>
+
+      <div>
+        <%= label_tag "#{@time_took} Miliseconds" %>
+      </div>
+
+    </fieldset>
+  <% end %>
+
+  <div class='search-section'>
+    <fieldset class='search-with-elastic-section'>
+      <legend>Search <b>with</b> ElasticSearch:</legend>
+      <%= form_tag search_book_path, method: :get do %>
+        <%= hidden_field_tag :with_elastic, true%>
+        <%= label_tag 'Search Book' %>
+        <%= text_field_tag :search_term, params[:search_term] %>
+        <%= submit_tag 'Search'%>
+      <% end %>
+    </fieldset>
+
+    <fieldset class='search-without-elastic-section'>
+      <legend>Search <b>without</b> ElasticSearch:</legend>
+      <%= form_tag search_book_path, method: :get do %>
+        <%= label_tag 'Search Book' %>
+        <%= text_field_tag :search_term, params[:search_term] %>
+        <%= submit_tag 'Search'%>
+      <% end %>
+    </fieldset>
+    
+  </div>
+  <table>
     <tr>
       <th>Title</th>
       <th>Author</th>

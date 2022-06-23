@@ -34,3 +34,9 @@ Things you may want to cover:
 		
 		rails db:seed
 
+* Initial Import Book records
+				
+		Book.__elasticsearch__.create_index!
+		Book.import
+
+
